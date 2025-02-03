@@ -1,9 +1,7 @@
 import pytest
-import os
 from transcribe import WhisperInstance
 from unittest.mock import patch, MagicMock
 import ffmpeg
-import numpy as np
 
 @pytest.fixture
 def whisper_instance():
