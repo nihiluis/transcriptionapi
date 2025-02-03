@@ -1,5 +1,5 @@
 # Transcription API
-A FastAPI-based service that transcribes M4A audio files using Whisper.cpp. 
+A FastAPI-based service that provides endpoints to transcribe M4A audio files using Whisper.cpp. 
 
 ## Features
 - 🎤 Audio file transcription using Whisper
@@ -13,6 +13,7 @@ A FastAPI-based service that transcribes M4A audio files using Whisper.cpp.
 - Linux (perhaps MacOS is supported too)
 
 ## Getting started
+Local development
 ```bash
 # Install dependencies and setup venv
 uv sync
@@ -22,8 +23,11 @@ uv run run_dev.py
 uv run pytest
 ```
 
+Docker
 ```bash
 # Run the app in Docker
 docker build -t transcriptionapi .
 docker run -p 8000:8000 transcriptionapi
+# or pull the latest version
+docker pull ghcr.io/nihiluis/transcriptionapi:latest
 ```
