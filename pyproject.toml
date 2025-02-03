@@ -5,10 +5,16 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "fastapi[standard]>=0.115.8",
     "ffmpeg-python>=0.2.0",
     "numpy>=2.1.3",
+    "pytest>=8.3.4",
     "whispercpp",
 ]
 
 [tool.uv.sources]
 whispercpp = { git = "https://github.com/AIWintermuteAI/whispercpp.git" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

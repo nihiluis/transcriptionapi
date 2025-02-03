@@ -14,6 +14,16 @@ A FastAPI-based service that transcribes M4A audio files using Whisper.cpp.
 
 ## Getting started
 ```bash
+# Install dependencies and setup venv
 uv sync
+# Run the app locally
 uv run run_dev.py
+# Run tests
+uv run pytest
+```
+
+```bash
+# Run the app in Docker
+docker build -t transcriptionapi .
+docker run -p 8000:8000 transcriptionapi
 ```

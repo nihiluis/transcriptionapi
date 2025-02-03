@@ -2,10 +2,20 @@ from whispercpp import Whisper
 import ffmpeg
 import numpy as np
 import os
+import subprocess
+
+
 
 class WhisperInstance:
     def __init__(self, model_name: str):
+        self._check_ffmpeg_installed()
         self.w = Whisper.from_pretrained(model_name)
+
+    def _check_ffmpeg_installed(self):
+        try:
+            subprocess.run(['ffmpeg', '-version'], capture_output=True, check=True)
+        except (subprocess.SubprocessError, FileNotFoundError):
+            raise RuntimeError("ffmpeg is not installed. Please install ffmpeg to use this transcriber.")
 
     def transcribe(self, audio_path: str):
         if not os.path.exists(audio_path):
