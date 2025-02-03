@@ -7,8 +7,12 @@ import numpy as np
 
 @pytest.fixture
 def whisper_instance():
-    # Mock whispercpp where it's imported in transcribe.py
-    with patch('transcribe.Whisper', autospec=True) as mock_whisper_class:
+    # Mock both whispercpp and subprocess.run
+    with patch('transcribe.Whisper', autospec=True) as mock_whisper_class, \
+         patch('subprocess.run') as mock_run:
+        # Configure subprocess.run mock to succeed
+        mock_run.return_value = MagicMock()
+        
         # Create a mock instance that will be returned by from_pretrained
         mock_instance = MagicMock()
         mock_instance.transcribe.return_value = "test transcription"
